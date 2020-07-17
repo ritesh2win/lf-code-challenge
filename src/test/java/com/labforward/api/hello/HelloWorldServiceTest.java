@@ -1,7 +1,9 @@
 package com.labforward.api.hello;
 
 import com.labforward.api.core.exception.EntityValidationException;
+import com.labforward.api.core.exception.ResourceNotFoundException;
 import com.labforward.api.hello.domain.Greeting;
+import com.labforward.api.hello.domain.UpdateGreeting;
 import com.labforward.api.hello.service.HelloWorldService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -48,5 +50,24 @@ public class HelloWorldServiceTest {
 
 		Greeting created = helloService.createGreeting(request);
 		Assert.assertEquals(HELLO_LUKE, created.getMessage());
+	}
+
+	@Test
+	public void updateGreetingOKWhenValidRequest() {
+		Greeting hello = new Greeting("HELLO_LUKE");
+		Greeting created = helloService.createGreeting(hello);
+		UpdateGreeting updateGreeting= new UpdateGreeting();
+		updateGreeting.setOldGreetingMsg("HELLO_LUKE");
+		updateGreeting.setNewGreetingMsg("Hello Ritesh");
+		Optional<Object> updated = helloService.update(updateGreeting.getOldGreetingMsg(),updateGreeting.getNewGreetingMsg());
+		Assert.assertEquals("Hello Ritesh", ((Greeting) updated.get()).getMessage());
+	}
+
+	@Test(expected = ResourceNotFoundException.class)
+	public void updateGreetingWithoutExistingGreetingThrowsException() {
+		UpdateGreeting updateGreeting= new UpdateGreeting();
+		updateGreeting.setOldGreetingMsg("HELLO_LUKE");
+		updateGreeting.setNewGreetingMsg("Hello Ritesh");
+		Optional<Object> updated = helloService.update(updateGreeting.getOldGreetingMsg(),updateGreeting.getNewGreetingMsg());
 	}
 }

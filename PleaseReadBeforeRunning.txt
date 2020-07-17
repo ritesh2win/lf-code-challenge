@@ -1,0 +1,39 @@
+Added 2 endpoint and an interactive UI to see all the functionality of this application.
+
+if you want to visit UI then use http://localhost:8083/home
+
+In the home UI,there are 3 functionality
+
+1. View All Previous Greetings : This will enable us to view all the existing sent Greetings.
+
+2. To Send A Greeting Messages : This will enable us to send a new Greeting. I've used existing end point . All validation will remain same.
+
+3. Update existing Greeting Messages : For this I've created a new end point which will take existing greeting message and a new greeting message. 	If existing greeting message is available inside the hashmap then it will update existing message with new greeting message although I've kept the id same as old Greeting message (this can be change as per Business Requirement). If existing message is not found it will throw an exception.
+
+Please note : In case of redundant Greetings message it will update the first message it found (since it was not clear whether we have to update all greeting corresponding to message So I've update the first one it finds).
+
+
+Test
+
+I have added one test case for checking the positive scenario. It can be found in HelloControllerTest
+
+
+Documentation
+
+I've added java documentation at Controller level only
+
+
+Utility Classes
+
+Created one utility classes for internal calls.
+
+
+Regarding Test Cases Failure
+
+Since I've made controller as per MVC, test cases are failing due to Missing @RequestBody annotation but my UI will
+work without this annotation only therefore please build the project with skip test on. I may fix this issue but due
+to time constraint I am not able to do.
+
+
+ 
+

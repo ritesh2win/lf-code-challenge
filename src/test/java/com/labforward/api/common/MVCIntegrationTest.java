@@ -14,7 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 @ComponentScan(basePackages = "com.labforward.api")
 @WebAppConfiguration
 public abstract class MVCIntegrationTest {
-
+	@Autowired
 	protected MockMvc mockMvc;
 
 	@Autowired

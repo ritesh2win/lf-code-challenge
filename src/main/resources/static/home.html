@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LABFORWARD</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<p>
+    <h2>1. View All Previous Greetings</h2>
+</p>
+<form action="/getAllMessages">
+    <input type="submit" value="View All Greetings" />
+</form>
+<br>
+<p>If you click the "View All Greetings" button, All existing Greeting message will be displayed.</p>
+<br>
+<p>
+    <h2>2. To Send A Greeting Messages</h2>
+</p>
+<br>
+<form action="/create" method="post">
+    <label for="greeting">Type Your Greeting:</label>&nbsp;
+    <input type="text" id="greeting" name="greeting">&nbsp;&nbsp;
+    <input type="submit" class="button1" value="Send Your Greeting">
+</form>
+<br>
+<p>If you click the "Send Your Greeting" button, A Greeting message will be sent".</p>
+<br>
+<p>
+<h2>3. Update existing Greeting Messages</h2>
+</p>
+<br>
+<form action="/uiupdate" method="post">
+    <label for="greeting">Type Your Existing Greeting Message to Update:</label>&nbsp;
+    <input type="text" id="oldGreetingMsg" name="oldGreetingMsg">&nbsp;&nbsp;
+    <label for="greeting">New Greeting Message:</label>&nbsp;
+    <input type="text" id="newGreetingMsg" name="newGreetingMsg">&nbsp;&nbsp;
+    <input type="submit" class="button1" value="Update Your Greeting">
+</form>
+<br>
+<p>If you click the "Update Your Greeting" button, Your existing Greeting message (If exists) will be updated with your new Greeting Message".</p>
+<br>
+</body>
+</html>
